@@ -1,27 +1,32 @@
 name: JMeter Tests
 
+# Controls when the action is run
 on:
+# Triggers the workflow on push or pull requests but only for the main branch
   push:
     branches:
       - main
   pull_request:
     branches:
       - main
+# Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+#   This workflow contains a single job called "build"
   build:
+# The type of runner that the job will run on - Github Hosted or Self-Hosted (Windows/Linux/MacOS)
     runs-on: windows-latest
-
+# Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Checkout code
+# Checks out your repository so your job can access it
         uses: actions/checkout@v2
-
+# Install Jmeter, OpenJDK
       - name: Set up JMeter
         run: |
           choco install openjdk -y
           choco install jmeter -y
-
       - name: Run JMeter test
         run: |
           jmeter -n -t Example-Demo.jmx -l result.jtl
