@@ -1,0 +1,27 @@
+name: JMeter Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JMeter
+        run: |
+          choco install openjdk -y
+          choco install jmeter -y
+
+      - name: Run JMeter test
+        run: |
+          jmeter -n -t Example-Demo.jmx -l result.jtl
