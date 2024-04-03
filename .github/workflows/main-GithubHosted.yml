@@ -29,8 +29,8 @@ jobs:
           choco install jmeter -y
       - name: Run JMeter test
         run: |
-          jmeter -n -t cad_converter_final_03April.jmx -l $GITHUB_WORKSPACE/results.jtl
+          jmeter -n -t cad_converter_final_03April.jmx -l $GITHUB_WORKSPACE/Results/results.jtl
       - name: Generate HTML Report
         run: |
           # Generate HTML report from JTL file
-          jmeter -g $GITHUB_WORKSPACE/results.jtl -o html-report/
+          jmeter -g $GITHUB_WORKSPACE/Results/results.jtl -o $GITHUB_WORKSPACE/Results/
