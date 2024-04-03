@@ -29,4 +29,4 @@ jobs:
           choco install jmeter -y
       - name: Run JMeter test
         run: |
-          jmeter -n -t Example-Demo.jmx -l result.jtl
+          jmeter -n -t cad_converter_final_04April.jmx -l result.jtl
