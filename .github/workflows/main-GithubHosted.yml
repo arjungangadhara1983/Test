@@ -29,8 +29,8 @@ jobs:
           choco install jmeter -y
       - name: Run JMeter test
         run: |
-          jmeter -n -t cad_converter_final_04April.jmx -l result.jtl
+          jmeter -n -t cad_converter_final_04April.jmx -l results.jtl
       - name: Generate HTML Report
         run: |
           # Generate HTML report from JTL file
-          jmeter.bat -g results.jtl -o html-report/
+          jmeter -g results.jtl -o html-report/
