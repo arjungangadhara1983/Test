@@ -30,3 +30,7 @@ jobs:
       - name: Run JMeter test
         run: |
           jmeter -n -t cad_converter_final_04April.jmx -l result.jtl
+      - name: Generate HTML Report
+        run: |
+          # Generate HTML report from JTL file
+          jmeter.bat -g results.jtl -o html-report/
